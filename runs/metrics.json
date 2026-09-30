@@ -1,0 +1,269 @@
+{
+  "started_at_utc": "2026-09-30T22:33:02.878791+00:00",
+  "completed_at_utc": "2026-09-30T22:36:12.545679+00:00",
+  "seed": 42,
+  "steps": 800,
+  "batch": 16,
+  "context": 96,
+  "source_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "models": {
+    "dense-active": {
+      "parameters": {
+        "total": 135872,
+        "active_per_token_estimate": 135872
+      },
+      "selected_step": 800,
+      "training_seconds_including_validation_and_saving": 32.17617426400011,
+      "training_tokens": 1228800,
+      "validation": {
+        "cross_entropy_nats": 1.8447901047477426,
+        "perplexity": 6.326771691685937,
+        "next_character_accuracy": 0.4601277634223371,
+        "evaluated_tokens": 111456,
+        "blocks": 1161,
+        "routing_assignment_fractions": [
+          [
+            0.0
+          ],
+          [
+            0.0
+          ]
+        ]
+      },
+      "test": {
+        "cross_entropy_nats": 1.9596447784463256,
+        "perplexity": 7.0968056790183685,
+        "next_character_accuracy": 0.4365130634510479,
+        "evaluated_tokens": 111456,
+        "blocks": 1161,
+        "routing_assignment_fractions": [
+          [
+            0.0
+          ],
+          [
+            0.0
+          ]
+        ]
+      },
+      "forward_latency_ms_p50": 1.5699604998644645,
+      "forward_latency_ms_p95": 2.4960185500276557,
+      "benchmark": "CPU, one 96-character window, 5 warmup + 30 measured forwards, materialized output; no KV cache.",
+      "forward_latency_samples_ms": [
+        1.8319800001336262,
+        1.8680439998206566,
+        1.516405000074883,
+        1.5330799997173017,
+        1.4647669995611068,
+        1.5206810003292048,
+        1.6289639997921768,
+        1.5364549999503652,
+        1.6450289999738743,
+        1.5791189998708433,
+        1.4921590000085416,
+        1.5560040001219022,
+        2.0895779998681974,
+        1.6976280003291322,
+        2.699075999771594,
+        1.5608019998580858,
+        1.4874710000185587,
+        1.6191600002457562,
+        1.8634870002642856,
+        2.6023810000879166,
+        1.8348449998484284,
+        1.5956540000843233,
+        1.4900950000082958,
+        2.0246600001883053,
+        1.5548930000477412,
+        1.4893140000822314,
+        1.385207000112132,
+        1.5474219999305205,
+        1.4461490000030608,
+        2.3660199999540055
+      ]
+    },
+    "dense-total": {
+      "parameters": {
+        "total": 234176,
+        "active_per_token_estimate": 234176
+      },
+      "selected_step": 800,
+      "training_seconds_including_validation_and_saving": 40.185425994999605,
+      "training_tokens": 1228800,
+      "validation": {
+        "cross_entropy_nats": 1.794354682231545,
+        "perplexity": 6.0155915009029854,
+        "next_character_accuracy": 0.4683641975308641,
+        "evaluated_tokens": 111456,
+        "blocks": 1161,
+        "routing_assignment_fractions": [
+          [
+            0.0
+          ],
+          [
+            0.0
+          ]
+        ]
+      },
+      "test": {
+        "cross_entropy_nats": 1.931557946426924,
+        "perplexity": 6.900252094888693,
+        "next_character_accuracy": 0.44074791846109673,
+        "evaluated_tokens": 111456,
+        "blocks": 1161,
+        "routing_assignment_fractions": [
+          [
+            0.0
+          ],
+          [
+            0.0
+          ]
+        ]
+      },
+      "forward_latency_ms_p50": 1.771556999983659,
+      "forward_latency_ms_p95": 2.2890883000172835,
+      "benchmark": "CPU, one 96-character window, 5 warmup + 30 measured forwards, materialized output; no KV cache.",
+      "forward_latency_samples_ms": [
+        1.5899559998615587,
+        1.6862809998201556,
+        1.7020440000123926,
+        1.7055499997695733,
+        1.7206219999934547,
+        1.6771170003266889,
+        2.0801739997295954,
+        1.6878129999895464,
+        1.7089949997171061,
+        1.8933929995910148,
+        1.7348640003547189,
+        1.6965559998425306,
+        1.7365970002174436,
+        2.101236000271456,
+        2.2751880001123936,
+        2.40159799977846,
+        2.2966510000514972,
+        1.9890469998244953,
+        1.7591109999557375,
+        1.6089600003397209,
+        1.8250400003125833,
+        1.896842999940418,
+        1.6653389998282364,
+        1.6485240003021318,
+        2.2798449999754666,
+        1.7840030000115803,
+        2.205332999892562,
+        1.9265079999968293,
+        2.103889999943931,
+        2.2060579999561014
+      ]
+    },
+    "moe": {
+      "parameters": {
+        "total": 234688,
+        "active_per_token_estimate": 136384,
+        "note": "Parameter involvement estimate, not FLOPs, memory usage, or a speed claim."
+      },
+      "selected_step": 800,
+      "training_seconds_including_validation_and_saving": 36.59056487099997,
+      "training_tokens": 1228800,
+      "validation": {
+        "cross_entropy_nats": 1.8113112300762733,
+        "perplexity": 6.118464889900336,
+        "next_character_accuracy": 0.4650803904679873,
+        "evaluated_tokens": 111456,
+        "blocks": 1161,
+        "routing_assignment_fractions": [
+          [
+            0.2663293480873108,
+            0.3256082832813263,
+            0.14023475348949432,
+            0.2678276300430298
+          ],
+          [
+            0.1820942461490631,
+            0.34896281361579895,
+            0.2813980281352997,
+            0.18754486739635468
+          ]
+        ]
+      },
+      "test": {
+        "cross_entropy_nats": 1.9403288656016242,
+        "perplexity": 6.961039840806487,
+        "next_character_accuracy": 0.43524799023830035,
+        "evaluated_tokens": 111456,
+        "blocks": 1161,
+        "routing_assignment_fractions": [
+          [
+            0.25997254252433777,
+            0.32365238666534424,
+            0.1474752426147461,
+            0.2688998579978943
+          ],
+          [
+            0.18811461329460144,
+            0.34875649213790894,
+            0.2792671322822571,
+            0.18386177718639374
+          ]
+        ]
+      },
+      "forward_latency_ms_p50": 1.9513349998305785,
+      "forward_latency_ms_p95": 2.037389050110505,
+      "benchmark": "CPU, one 96-character window, 5 warmup + 30 measured forwards, materialized output; no KV cache.",
+      "forward_latency_samples_ms": [
+        1.9505989998833684,
+        2.0097679998798412,
+        1.9056910000472271,
+        1.9966689997090725,
+        1.9520709997777885,
+        2.0372290000523208,
+        1.8961569999191852,
+        2.0307900003899704,
+        1.9081949999417702,
+        2.001356000164378,
+        2.010980000250129,
+        1.955335999809904,
+        1.9243900001129077,
+        2.035345999956917,
+        1.9660829998429108,
+        1.9362869998076349,
+        1.8934929998977168,
+        1.9975390000581683,
+        2.0015160002913035,
+        2.0375200001581106,
+        1.8879549998018774,
+        2.0481970000219007,
+        1.9646400000965514,
+        1.8973890000779647,
+        1.517275999958656,
+        1.4944220001780195,
+        1.4687329999105714,
+        1.515532999746938,
+        1.617256999907113,
+        1.5958539997882326
+      ]
+    }
+  },
+  "unigram_baseline": {
+    "test_nll": 3.3479415615680015,
+    "test_perplexity": 28.44412286545255
+  },
+  "selected_by_full_validation_nll": "dense-total",
+  "limitations": [
+    "One seed; small corpus and short context.",
+    "Character-level model, not a general-purpose LLM.",
+    "Equal sampled-token budgets, not equal wall-clock compute.",
+    "CPU sparse dispatch has overhead; no assumed speedup.",
+    "Split boundaries do not guarantee absence of repeated phrases across Shakespeare plays."
+  ],
+  "runtime": {
+    "python": "3.12.14",
+    "tensorflow": "2.20.0",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "intra_threads": 2,
+    "inter_threads": 2,
+    "oneDNN": false,
+    "devices": [
+      "PhysicalDevice(name='/physical_device:CPU:0', device_type='CPU')"
+    ]
+  }
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "model": "dense-active",
+    "test_offset": 18144,
+    "mean_nll": 3.2324631214141846,
+    "text": ":\nHere, madam:\n'Hic ibat Simois; hic est Sigeia tellus;\nHic steterat Priami regia celsa senis.'\n"
+  },
+  {
+    "model": "dense-active",
+    "test_offset": 18816,
+    "mean_nll": 2.888711929321289,
+    "text": " Sigeia tellus,' I\ntrust you not; 'Hic steterat Priami,' take heed\nhe hear us not, 'regia,' pres"
+  },
+  {
+    "model": "dense-active",
+    "test_offset": 35808,
+    "mean_nll": 2.8197576999664307,
+    "text": "lcome home, Grumio!\n\nPHILIP:\nHow now, Grumio!\n\nJOSEPH:\nWhat, Grumio!\n\nNICHOLAS:\nFellow Grumio!\n\n"
+  },
+  {
+    "model": "dense-active",
+    "test_offset": 18336,
+    "mean_nll": 2.7508885860443115,
+    "text": "ic est,' son unto Vincentio of Pisa,\n'Sigeia tellus,' disguised thus to get your love;\n'Hic stet"
+  },
+  {
+    "model": "dense-active",
+    "test_offset": 105216,
+    "mean_nll": 2.701565980911255,
+    "text": " a pox o' that! How came that widow in?\nwidow Dido!\n\nSEBASTIAN:\nWhat if he had said 'widower AEn"
+  },
+  {
+    "model": "dense-active",
+    "test_offset": 18432,
+    "mean_nll": 2.6535162925720215,
+    "text": "erat,' and that Lucentio that comes\na-wooing, 'Priami,' is my man Tranio, 'regia,'\nbearing my po"
+  },
+  {
+    "model": "dense-active",
+    "test_offset": 18240,
+    "mean_nll": 2.6352310180664062,
+    "text": "\nBIANCA:\nConstrue them.\n\nLUCENTIO:\n'Hic ibat,' as I told you before, 'Simois,' I am\nLucentio, 'h"
+  },
+  {
+    "model": "dense-active",
+    "test_offset": 103584,
+    "mean_nll": 2.59328293800354,
+    "text": "nd seem to be desert,--\n\nSEBASTIAN:\nHa, ha, ha! So, you're paid.\n\nADRIAN:\nUninhabitable and almo"
+  },
+  {
+    "model": "dense-active",
+    "test_offset": 78624,
+    "mean_nll": 2.589510440826416,
+    "text": " bawling, blasphemous,\nincharitable dog!\n\nBoatswain:\nWork you then.\n\nANTONIO:\nHang, cur! hang, y"
+  },
+  {
+    "model": "dense-active",
+    "test_offset": 7680,
+    "mean_nll": 2.5720431804656982,
+    "text": " buzzard.\n\nPETRUCHIO:\nO slow-wing'd turtle! shall a buzzard take thee?\n\nKATHARINA:\nAy, for a tur"
+  },
+  {
+    "model": "dense-total",
+    "test_offset": 18144,
+    "mean_nll": 3.332904100418091,
+    "text": ":\nHere, madam:\n'Hic ibat Simois; hic est Sigeia tellus;\nHic steterat Priami regia celsa senis.'\n"
+  },
+  {
+    "model": "dense-total",
+    "test_offset": 18816,
+    "mean_nll": 2.940945625305176,
+    "text": " Sigeia tellus,' I\ntrust you not; 'Hic steterat Priami,' take heed\nhe hear us not, 'regia,' pres"
+  },
+  {
+    "model": "dense-total",
+    "test_offset": 105216,
+    "mean_nll": 2.8409926891326904,
+    "text": " a pox o' that! How came that widow in?\nwidow Dido!\n\nSEBASTIAN:\nWhat if he had said 'widower AEn"
+  },
+  {
+    "model": "dense-total",
+    "test_offset": 18432,
+    "mean_nll": 2.8289382457733154,
+    "text": "erat,' and that Lucentio that comes\na-wooing, 'Priami,' is my man Tranio, 'regia,'\nbearing my po"
+  },
+  {
+    "model": "dense-total",
+    "test_offset": 18240,
+    "mean_nll": 2.7871510982513428,
+    "text": "\nBIANCA:\nConstrue them.\n\nLUCENTIO:\n'Hic ibat,' as I told you before, 'Simois,' I am\nLucentio, 'h"
+  },
+  {
+    "model": "dense-total",
+    "test_offset": 35808,
+    "mean_nll": 2.757692337036133,
+    "text": "lcome home, Grumio!\n\nPHILIP:\nHow now, Grumio!\n\nJOSEPH:\nWhat, Grumio!\n\nNICHOLAS:\nFellow Grumio!\n\n"
+  },
+  {
+    "model": "dense-total",
+    "test_offset": 103488,
+    "mean_nll": 2.7059860229492188,
+    "text": "SEBASTIAN:\nDone. The wager?\n\nANTONIO:\nA laughter.\n\nSEBASTIAN:\nA match!\n\nADRIAN:\nThough this isla"
+  },
+  {
+    "model": "dense-total",
+    "test_offset": 7680,
+    "mean_nll": 2.70062255859375,
+    "text": " buzzard.\n\nPETRUCHIO:\nO slow-wing'd turtle! shall a buzzard take thee?\n\nKATHARINA:\nAy, for a tur"
+  },
+  {
+    "model": "dense-total",
+    "test_offset": 103584,
+    "mean_nll": 2.6965267658233643,
+    "text": "nd seem to be desert,--\n\nSEBASTIAN:\nHa, ha, ha! So, you're paid.\n\nADRIAN:\nUninhabitable and almo"
+  },
+  {
+    "model": "dense-total",
+    "test_offset": 103680,
+    "mean_nll": 2.6629559993743896,
+    "text": "st inaccessible,--\n\nSEBASTIAN:\nYet,--\n\nADRIAN:\nYet,--\n\nANTONIO:\nHe could not miss't.\n\nADRIAN:\nIt"
+  },
+  {
+    "model": "moe",
+    "test_offset": 18144,
+    "mean_nll": 3.2979724407196045,
+    "text": ":\nHere, madam:\n'Hic ibat Simois; hic est Sigeia tellus;\nHic steterat Priami regia celsa senis.'\n"
+  },
+  {
+    "model": "moe",
+    "test_offset": 18816,
+    "mean_nll": 2.884598970413208,
+    "text": " Sigeia tellus,' I\ntrust you not; 'Hic steterat Priami,' take heed\nhe hear us not, 'regia,' pres"
+  },
+  {
+    "model": "moe",
+    "test_offset": 35808,
+    "mean_nll": 2.8006856441497803,
+    "text": "lcome home, Grumio!\n\nPHILIP:\nHow now, Grumio!\n\nJOSEPH:\nWhat, Grumio!\n\nNICHOLAS:\nFellow Grumio!\n\n"
+  },
+  {
+    "model": "moe",
+    "test_offset": 18336,
+    "mean_nll": 2.6804635524749756,
+    "text": "ic est,' son unto Vincentio of Pisa,\n'Sigeia tellus,' disguised thus to get your love;\n'Hic stet"
+  },
+  {
+    "model": "moe",
+    "test_offset": 18432,
+    "mean_nll": 2.6750118732452393,
+    "text": "erat,' and that Lucentio that comes\na-wooing, 'Priami,' is my man Tranio, 'regia,'\nbearing my po"
+  },
+  {
+    "model": "moe",
+    "test_offset": 105216,
+    "mean_nll": 2.652758836746216,
+    "text": " a pox o' that! How came that widow in?\nwidow Dido!\n\nSEBASTIAN:\nWhat if he had said 'widower AEn"
+  },
+  {
+    "model": "moe",
+    "test_offset": 18240,
+    "mean_nll": 2.6223461627960205,
+    "text": "\nBIANCA:\nConstrue them.\n\nLUCENTIO:\n'Hic ibat,' as I told you before, 'Simois,' I am\nLucentio, 'h"
+  },
+  {
+    "model": "moe",
+    "test_offset": 7680,
+    "mean_nll": 2.537367105484009,
+    "text": " buzzard.\n\nPETRUCHIO:\nO slow-wing'd turtle! shall a buzzard take thee?\n\nKATHARINA:\nAy, for a tur"
+  },
+  {
+    "model": "moe",
+    "test_offset": 78624,
+    "mean_nll": 2.534414529800415,
+    "text": " bawling, blasphemous,\nincharitable dog!\n\nBoatswain:\nWork you then.\n\nANTONIO:\nHang, cur! hang, y"
+  },
+  {
+    "model": "moe",
+    "test_offset": 18720,
+    "mean_nll": 2.531262159347534,
+    "text": "again.\n\nBIANCA:\nNow let me see if I can construe it: 'Hic ibat\nSimois,' I know you not, 'hic est"
+  }
+]

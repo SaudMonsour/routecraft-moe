@@ -1,0 +1,67 @@
+{
+  "verified_at_utc": "2026-09-30T22:41:28.155383+00:00",
+  "python": "3.12.14",
+  "tensorflow": "2.20.0",
+  "checkpoint_replay": {
+    "dense-active": {
+      "nll_difference": 3.799090153577822e-09,
+      "max_block_nll_difference": 2.384185791015625e-07,
+      "sample_replay_matches": true,
+      "parameters": 135872
+    },
+    "dense-total": {
+      "nll_difference": 2.2589186077226486e-09,
+      "max_block_nll_difference": 2.384185791015625e-07,
+      "sample_replay_matches": true,
+      "parameters": 234176
+    },
+    "moe": {
+      "nll_difference": 2.5669528724847623e-09,
+      "max_block_nll_difference": 2.384185791015625e-07,
+      "sample_replay_matches": true,
+      "parameters": 234688
+    }
+  },
+  "source_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+  "artifact_sha256": {
+    ".gitignore": "d6268a3972010a8b5b00af18214a279d49fd7314812bb5a76a1f5c859c243657",
+    "README.md": "04063ac71ffcee33eaacd3a70de1ed52aaec6d7e6c6ea39425689cf4e74df0e0",
+    "USAGE.md": "99e9d5fa75697e826170082e46bec57a7c4cc60ea46ba60482aa9581b3252ce2",
+    "data/manifest.json": "59613bdb41a6399e6ea8c4a453065e0231cc248c85a26a510cb20a331270c66a",
+    "environment.lock.txt": "2a475b082c52b4d99eaf8e1f1d0c4f881e100ac676c2dea864f33c7b5f586243",
+    "figures/expert-balance.png": "6e451ae100ea1d39a6771596bba73fc2697d99923f0a41646fc6e7b868e164a3",
+    "figures/expert-routing.png": "480bc16e904f8cf3f0579929b727357d71bdd8f5598cd94d6f1536c4789d070d",
+    "figures/latency.png": "9368274fe140378bebb534e7c92187a274f138e8493ffdc8f1402d726baa9e3c",
+    "figures/learning-curves.png": "a6e76b470bb051d0e40b283cb2b8e12f179daaac6a81f9e0a7a692a23dcf5cd4",
+    "figures/model-comparison.png": "3a6f6b68108a89e7fc48bce73a45cb24adc6bf47c7dfd88caf3b1166472428c5",
+    "figures/parameter-comparison.png": "d625e28f545700de3b1e1c0fc4c273cbdf9828da4b0f4db9727fc4d18a3f3e69",
+    "generate.py": "f972f7181f86e8114cf1526883669697bb509dc865dfe49aacee0adbed33f7f4",
+    "inspect_run.py": "4fad8c1cdaa548b4998a411b9440ae1d6cc6880d01032f5d392d8f7d7ea6b746",
+    "model.py": "4c37993b0ed65e5113a6ebd57b50e1ae2bebed7d7d7854ded9a158065d6790a0",
+    "prepare.py": "d4a30aa56e13684fb5ba7e2ad7581de0baae08a102e5a5d43c00930ab4600517",
+    "requirements.txt": "07cde048d52cf7b1a90f7e44c88e253e689bef7c58018c87c200767e6b55e619",
+    "runs/dense-active/config.json": "4ae404854b9330e628c1762d7a41e70f47f6de329748df65887d9eec4de38e23",
+    "runs/dense-active/model.weights.h5": "62707bde9b0a22b40ae99d85b35ce2938f24f1f340f4399cc8dcea297268166e",
+    "runs/dense-active/sample.txt": "c7042cd8a06d9e5df84b59bfab08b8c2686926318d69415cf912d029966b2ee3",
+    "runs/dense-active/test_block_losses.npy": "9c4a5b2d447be7924f83e17c8e20a963018f0f9ef4c84b37f9a36e45438d0fd9",
+    "runs/dense-total/config.json": "7efb93237b44651dd0c0386b5a9e94dacd4324ceac89b0a8208c839f997e1cb2",
+    "runs/dense-total/model.weights.h5": "3bc7d47a8d19c40c03b70264778b28625815025c8b70e47d6de8b796908a0772",
+    "runs/dense-total/sample.txt": "46a1bd944ab70baab60e6d5fb3b7130725b69b74276ff370ecbfcd84508e1c57",
+    "runs/dense-total/test_block_losses.npy": "1013067a1f0b6b281b3cf61796f11a34ba011c1b82b89ecf120e76f72753edf1",
+    "runs/error_analysis.json": "38a190d5e3822eb989064b5febed67b46201c512ce79315950d755da48504fed",
+    "runs/inspection.json": "92b252b2e7b8fb5ee085112aca4ed7eb2063fd7cd15d88d92176044e6f10c681",
+    "runs/metrics.json": "8369f70df24bf3e68e802028665f86cd830096cd47f49f6924e78e540c143f9a",
+    "runs/moe/config.json": "28a486a79361ac83ab3d5fbdff43b159c980468e86cff11ad92f29adff5557ed",
+    "runs/moe/model.weights.h5": "7e72896384530dc9b759ab7e90b38222950ecd71a88e134a2aeef3b9ed8d68d9",
+    "runs/moe/sample.txt": "9737945a1edb75771d46ef054afefcba082e3b3aa77af1726abad411e2251f23",
+    "runs/moe/test_block_losses.npy": "1965f87a7844fd6c46c22d051f6de531c4124ee49f0a591b804c482be5280a67",
+    "runs/routing_by_character.csv": "d1926beeb9e22adae022538c07e3d9a3ff56a8a6661a3b2b4f6c9c303bdb1897",
+    "runs/training_history.csv": "8ec981748f3fdd737bfc04e6a1315fc9ba47e019f1a41dc329a7bf3839c186ce",
+    "runs/training_starts.npy": "c370fd4e35a9e28ab28ebe8aa1b1b47a428e841a941462da59ec21f23c8124d0",
+    "tests/test_model.py": "d1de136f4b82870217959717e7e2f8b63a1fa4af00282a30ea62fc24e5e071c1",
+    "train.py": "f254b380a5ee3259e45f82895333f58f02fc32b164b6599d4617db42aeeb4ded",
+    "verify_run.py": "ba9b93512d9017c7b095ba91ab9ce51c69839cbf94764efd4172cfa46168bee7"
+  },
+  "tests": "Seven architecture tests passed; see tests/test_model.py.",
+  "attribution": "AI-assisted implementation and automated verification for Saud Alotaibi."
+}

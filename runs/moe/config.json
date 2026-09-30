@@ -1,0 +1,12 @@
+{
+  "vocab_size": 65,
+  "context": 96,
+  "width": 64,
+  "heads": 4,
+  "layers": 2,
+  "hidden": 128,
+  "experts": 4,
+  "top_k": 2,
+  "architecture": "moe",
+  "balance_weight": 0.01
+}
