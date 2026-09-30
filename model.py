@@ -1,5 +1,5 @@
 """A small decoder with explicit causal attention and sparse top-2 experts."""
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 import tensorflow as tf
 
 
@@ -27,10 +27,10 @@ class Config:
             raise ValueError("invalid routing configuration")
 
 
-def rotary(x):
-    """Adjacent-pair RoPE on [batch, heads, time, head_width]."""
+def rotary(x, offset=0):
+    """Adjacent-pair RoPE; offset is the number of already cached positions."""
     dimension = tf.shape(x)[-1]
-    positions = tf.cast(tf.range(tf.shape(x)[-2]), x.dtype)
+    positions = tf.cast(tf.range(tf.shape(x)[-2]) + offset, x.dtype)
     frequencies = tf.pow(tf.cast(10000.0, x.dtype), -tf.cast(tf.range(0, dimension, 2), x.dtype) / tf.cast(dimension, x.dtype))
     angles = positions[:, None] * frequencies[None, :]
     cosine, sine = tf.cos(angles), tf.sin(angles)
@@ -57,6 +57,33 @@ class CausalAttention(tf.keras.layers.Layer):
         values = tf.matmul(tf.nn.softmax(scores, axis=-1), v)
         values = tf.reshape(tf.transpose(values, [0, 2, 1, 3]), [batch, time, self.heads * self.head_width])
         return self.output_projection(values)
+
+    def prefill(self, x):
+        """Return causal outputs plus rotated keys and unrotated values."""
+        batch, time = tf.shape(x)[0], tf.shape(x)[1]
+        qkv = tf.reshape(self.qkv(x), [batch, time, 3, self.heads, self.head_width])
+        q, k, v = tf.unstack(tf.transpose(qkv, [2, 0, 3, 1, 4]), axis=0)
+        q, k = rotary(q), rotary(k)
+        scores = tf.matmul(q, k, transpose_b=True) * (self.head_width ** -0.5)
+        mask = tf.linalg.band_part(tf.ones([time, time], dtype=tf.bool), -1, 0)
+        scores = tf.where(mask, scores, tf.cast(-1e9, scores.dtype))
+        values = tf.matmul(tf.nn.softmax(scores, axis=-1), v)
+        values = tf.reshape(tf.transpose(values, [0, 2, 1, 3]), [batch, time, self.heads * self.head_width])
+        return self.output_projection(values), (k, v)
+
+    def decode_step(self, x, cache):
+        """Attend one new position to the complete cached prefix, without a mask."""
+        keys, values = cache
+        batch, offset = tf.shape(x)[0], tf.shape(keys)[2]
+        qkv = tf.reshape(self.qkv(x), [batch, 1, 3, self.heads, self.head_width])
+        q, k, v = tf.unstack(tf.transpose(qkv, [2, 0, 3, 1, 4]), axis=0)
+        q, k = rotary(q, offset), rotary(k, offset)
+        keys = tf.concat([keys, k], axis=2)
+        values = tf.concat([values, v], axis=2)
+        scores = tf.matmul(q, keys, transpose_b=True) * (self.head_width ** -0.5)
+        output = tf.matmul(tf.nn.softmax(scores, axis=-1), values)
+        output = tf.reshape(tf.transpose(output, [0, 2, 1, 3]), [batch, 1, self.heads * self.head_width])
+        return self.output_projection(output), (keys, values)
 
 
 class SwiGLU(tf.keras.layers.Layer):
@@ -119,6 +146,17 @@ class DecoderBlock(tf.keras.layers.Layer):
             balance, fractions = tf.constant(0.0), tf.zeros([1])
         return x + delta, balance, fractions
 
+    def cached(self, x, cache=None):
+        if cache is None:
+            attention, cache = self.attention.prefill(self.norm1(x))
+        else:
+            attention, cache = self.attention.decode_step(self.norm1(x), cache)
+        x = x + attention
+        delta = self.ffn(self.norm2(x))
+        if self.is_moe:
+            delta = delta[0]
+        return x + delta, cache
+
 
 class LanguageModel(tf.keras.Model):
     def __init__(self, config):
@@ -140,6 +178,55 @@ class LanguageModel(tf.keras.Model):
         # Tied token embedding / output projection.
         logits = tf.einsum("btd,vd->btv", x, self.embedding.embeddings)
         return logits, tf.reduce_mean(balances), tf.stack(fractions)
+
+    def _validate_inference_ids(self, token_ids):
+        tf.debugging.assert_rank(token_ids, 2)
+        tf.debugging.assert_positive(tf.shape(token_ids)[0], message="empty batch")
+        tf.debugging.assert_positive(tf.shape(token_ids)[1], message="empty prefix")
+        tf.debugging.assert_greater_equal(token_ids, 0, message="negative token ID")
+        tf.debugging.assert_less(token_ids, self.config.vocab_size, message="token ID outside vocabulary")
+
+    def prefill(self, token_ids):
+        """Process a nonempty prefix and return last logits and per-block KV pairs.
+
+        This is inference only. Cache tensors have shape [batch, heads, time,
+        head_width], contain no padding, and must stay with this model instance.
+        """
+        self._validate_inference_ids(token_ids)
+        tf.debugging.assert_less_equal(tf.shape(token_ids)[1], self.config.context)
+        if not self.built:
+            self(token_ids)
+        x = self.embedding(token_ids)
+        caches = []
+        for block in self.blocks:
+            x, cache = block.cached(x)
+            caches.append(cache)
+        logits = tf.einsum("btd,vd->btv", self.final_norm(x[:, -1:]), self.embedding.embeddings)
+        return logits[:, 0], tuple(caches)
+
+    def decode_step(self, token_ids, caches):
+        """Append exactly one token; raise rather than silently truncate a cache."""
+        self._validate_inference_ids(token_ids)
+        tf.debugging.assert_equal(tf.shape(token_ids)[1], 1, message="decode_step needs one token")
+        if len(caches) != self.config.layers:
+            raise ValueError("one KV pair is required per decoder block")
+        length = tf.shape(caches[0][0])[2]
+        tf.debugging.assert_positive(length, message="prefill before decoding")
+        tf.debugging.assert_less(length, self.config.context, message="context full; re-prefill the window")
+        for keys, values in caches:
+            tf.debugging.assert_rank(keys, 4)
+            tf.debugging.assert_rank(values, 4)
+            tf.debugging.assert_equal(tf.shape(keys), tf.shape(values), message="key/value shape mismatch")
+            tf.debugging.assert_equal(tf.shape(keys), [tf.shape(token_ids)[0], self.config.heads,
+                                                       length, self.config.width // self.config.heads],
+                                      message="cache shape does not match model or batch")
+        x = self.embedding(token_ids)
+        updated = []
+        for block, cache in zip(self.blocks, caches):
+            x, cache = block.cached(x, cache)
+            updated.append(cache)
+        logits = tf.einsum("btd,vd->btv", self.final_norm(x), self.embedding.embeddings)
+        return logits[:, 0], tuple(updated)
 
     def parameter_accounting(self):
         total = self.count_params()
